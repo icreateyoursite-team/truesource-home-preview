@@ -192,6 +192,9 @@ p{margin:0}
 .glass::after{bottom:8px;right:8px;border-width:0 1px 1px 0}
 .brandgrid strong{display:block;font:500 1.75rem/1.1 var(--serif);margin:8px 0}
 .brandgrid small{display:block;color:var(--muted);font-size:.85rem;line-height:1.55}
+.plogo{display:flex;align-items:center;height:46px;margin:4px 0 16px}
+.plogo img{width:auto;max-width:100%;object-fit:contain}
+.brandgrid .price{display:block;margin-bottom:8px}
 .price{font:700 .78rem/1 var(--sans);letter-spacing:.16em;color:var(--brass-ink)}
 .price i{font-style:normal;opacity:.6}
 
