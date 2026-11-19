@@ -291,7 +291,9 @@
     var tick = null;
     $('generate').addEventListener('click', generate);
     function generate() {
-      goStep(3); $('loading').style.display = 'block'; $('result').style.display = 'none'; $('err').classList.remove('show');
+      goStep(3); $('loading').style.display = 'block'; $('result').style.display = 'none'; $('err').classList.remove('show', 'rv-err--info');
+      var sp0 = root.querySelector('.rv-loading .rv-spinner'); if (sp0) sp0.style.display = '';
+      var lead0 = root.querySelector('.rv-loading > p'); if (lead0) lead0.textContent = 'Our AI is reimagining your space. This usually takes about 10 seconds.';
       var MSGS = ['Clearing out the old cabinets...', 'Building your new cabinetry...', 'Installing countertops and backsplash...', 'Setting the new appliances...', 'Laying the new flooring...', 'Adding lighting and finishing touches...'];
       var mi = 0, h = root.querySelector('.rv-loading h3'); h.textContent = 'Designing your remodel...';
       clearInterval(tick);
@@ -301,6 +303,8 @@
         return fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt: buildPrompt(), image: upB64, mimeType: upMime || 'image/jpeg' }) });
       }).then(function (res) {
         return res.json().catch(function () { return {}; }).then(function (data) {
+          /* 404 / 405 / 501 = generate.php is not on this host (a static preview such as GitHub Pages) */
+          if (!res.ok && [404, 405, 501].indexOf(res.status) > -1) { var e = new Error('no-server'); e.noServer = true; throw e; }
           if (!res.ok) throw new Error((data.error && (data.error.message || data.error)) || ('HTTP ' + res.status));
           var parts = (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) || [];
           var img = parts.filter(function (p) { return p.inlineData; })[0];
@@ -310,6 +314,18 @@
         });
       }).catch(function (err) {
         clearInterval(tick);
+        /* no AI server here (static preview, or a file opened from disk): explain kindly instead of showing an error */
+        if (err.noServer || err instanceof TypeError) {
+          var sp = root.querySelector('.rv-loading .rv-spinner'); if (sp) sp.style.display = 'none';
+          h.textContent = 'Your design will appear here on the live site';
+          var lead = root.querySelector('.rv-loading > p');
+          if (lead) lead.textContent = 'This is a preview of the website, so the AI designer is switched off. On the live ' + (C.business || 'website') + ' site, your remodel appears right here in about 10 seconds.';
+          $('err').classList.add('show', 'rv-err--info');
+          $('err').innerHTML = '<a class="rv-btn rv-btn-primary" data-rv="previewCta" href="' + esc(C.ctaUrl || '#') + '" style="display:inline-flex;flex:none;padding:13px 24px">' + 'Book a Design Consultation</a>';
+          $('previewCta').addEventListener('click', function (e) { if (typeof C.onCta === 'function') { e.preventDefault(); C.onCta(''); } });
+          return;
+        }
+        var sp2 = root.querySelector('.rv-loading .rv-spinner'); if (sp2) sp2.style.display = '';
         h.textContent = 'Something went wrong';
         $('err').innerHTML = esc('Sorry, ' + err.message) + ' <button type="button" class="rv-btn rv-btn-ghost" data-rv="retry" style="margin-top:12px;padding:10px 18px;font-size:.9rem">Try again</button>';
         $('err').classList.add('show');

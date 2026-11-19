@@ -193,3 +193,4 @@
   .rv .rv-actions{flex-wrap:wrap}
 }
 @media (prefers-reduced-motion:reduce){.rv *{animation:none!important;transition:none!important}}
+.rv .rv-err.rv-err--info{background:transparent;border:0;color:inherit;text-align:center;padding:6px 0 0}
