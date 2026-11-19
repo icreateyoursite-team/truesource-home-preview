@@ -112,12 +112,20 @@
     /* a timed pop-up focuses the close button, so phones don't jump to the keyboard */
     setTimeout(() => (auto === true ? modal.querySelector('.modal__x') : modal.querySelector('input[name=name]')).focus(), 60);
   };
-  /* timed pop-up: once per visit, a few seconds after the homepage opens, never over an open menu or form */
-  setTimeout(() => {
-    let seen = false; try { seen = !!sessionStorage.getItem(POP_KEY); } catch (e) {}
-    const busy = !modal.hidden || nav.classList.contains('menu-open') || document.querySelector('.has-mega.open') || (document.activeElement && /INPUT|TEXTAREA/.test(document.activeElement.tagName));
-    if (!seen && !busy) openModal(true);
-  }, 6000);
+  /* pop-up: once per visit, the first time the visitor scrolls to the Closets section (never over an open menu or form) */
+  const closetsSec = document.getElementById('closets');
+  if (closetsSec) {
+    const popIO = new IntersectionObserver(entries => {
+      if (!entries.some(en => en.isIntersecting)) return;
+      let seen = false; try { seen = !!sessionStorage.getItem(POP_KEY); } catch (e) {}
+      if (seen) { popIO.disconnect(); return; }
+      const busy = !modal.hidden || nav.classList.contains('menu-open') || document.querySelector('.has-mega.open') || (document.activeElement && /INPUT|TEXTAREA/.test(document.activeElement.tagName));
+      if (busy) return;
+      popIO.disconnect();
+      setTimeout(() => openModal(true), 700);
+    }, { threshold: 0.35 });
+    popIO.observe(closetsSec);
+  }
   const closeModal = () => {
     modal.hidden = true; document.body.classList.remove('modal-open');
     if (lastFocus) lastFocus.focus();

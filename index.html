@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261119h">
+<link rel="stylesheet" href="styles.css?v=20261119i">
 <link rel="stylesheet" href="visualizer/visualizer.css?v=2">
 <link rel="preload" as="image" href="assets/img/band-kitchen-sage.jpg">
 </head>
@@ -41,6 +41,7 @@
     <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3.5 13.8 9l5.7 1.8-5.7 1.8L12 18.2l-1.8-5.6L4.5 10.8 10.2 9z"/><path d="M19 3v3M17.5 4.5h3M5 17v3M3.5 18.5h3"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
     <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="g-logo" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></symbol>
     <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
   </defs>
 </svg>
@@ -133,7 +134,7 @@
     <p class="hero__lead">Quality cabinetry, countertops and custom closets at competitive prices, with more than 25 years of experience guiding every choice for your kitchen, bath or new home.</p>
     <div class="hero__btns">
       <a class="btn btn--accent" href="#contact" data-modal="consult"><span>Book a Design Consultation</span><svg class="ic"><use href="#i-arrow"/></svg></a>
-      <a class="btn btn--ai" href="#ai-tool"><svg class="ic"><use href="#i-spark"/></svg><span>Try the AI Remodel Tool</span></a>
+      <a class="btn btn--light" href="#ai-tool"><svg class="ic"><use href="#i-spark"/></svg><span>Try the AI Remodel Tool</span></a>
     </div>
     <p class="hero__call">Prefer to talk? <a href="tel:7709568899">Call or text 770-956-8899</a></p>
     <ul class="stats">
@@ -315,31 +316,34 @@
 <section class="sec sec--linen grain" id="reviews">
   <div class="wrap">
     <div class="reviews__head reveal">
-      <div>
-        <p class="eyebrow">Client reviews</p>
-        <h2>What homeowners and designers <em>say about us</em></h2>
-      </div>
-      <div class="scores">
-        <div class="score score--big"><strong>35+</strong><span class="stars stars--gold" aria-hidden="true">★★★★★</span><small>Five-star reviews</small></div>
-        <div class="score"><strong>5.0</strong><small>Houzz</small></div>
-        <div class="score"><strong>5.0</strong><small>Facebook</small></div>
-      </div>
+      <a class="gbadge" href="https://www.truesourcehome.com/reviews"><svg class="g" aria-hidden="true"><use href="#g-logo"/></svg><span class="gstars gstars--lg" aria-hidden="true">★★★★★</span><span class="gbadge__sep"></span><span>Rated five stars by our clients</span></a>
+      <h2><span class="big">35+</span> five-star reviews <em>from homeowners and designers</em></h2>
+      <p>What clients say about working with TrueSource, in their own words on Google.</p>
     </div>
-    <div class="quotes">
-      <figure class="quote reveal">
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <blockquote>“They had a great selection and great pricing. The cabinets came in early and the installation was a breeze. I highly recommend TrueSource and would definitely do business with them again.”</blockquote>
-        <figcaption><strong>James Bryant</strong><span>Google review</span></figcaption>
+    <div class="greviews">
+      <figure class="greview reveal">
+        <blockquote>“They had a great selection and great pricing… The cabinets came in early and the installation was a breeze.”</blockquote>
+        <figcaption><svg class="g" aria-hidden="true"><use href="#g-logo"/></svg><span><span class="gstars" aria-label="5 out of 5 stars">★★★★★</span><strong>James Bryant</strong></span></figcaption>
       </figure>
-      <figure class="quote reveal">
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <blockquote>“One of the best companies I've ever dealt with! So timely, clean, and great prices. Really great selections of everything you need for your home.”</blockquote>
-        <figcaption><strong>Kendal Boggs Interiors</strong><span>Interior designer, Houzz</span></figcaption>
+      <figure class="greview reveal">
+        <blockquote>“From initial design to final product, they work with you along the way to get you the best cabinets… to fit your budget.”</blockquote>
+        <figcaption><svg class="g" aria-hidden="true"><use href="#g-logo"/></svg><span><span class="gstars" aria-label="5 out of 5 stars">★★★★★</span><strong>Chris Champion</strong></span></figcaption>
       </figure>
-      <figure class="quote reveal">
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <blockquote>“I really like their showroom, which has tons of cabinet door styles and colors to choose from. Having countertop and tile selections all in one place saves you the hassle.”</blockquote>
-        <figcaption><strong>Chris Champion</strong><span>Google review</span></figcaption>
+      <figure class="greview reveal">
+        <blockquote>“The team at TrueSource was amazing and incredibly helpful with making the best design for our kitchen.”</blockquote>
+        <figcaption><svg class="g" aria-hidden="true"><use href="#g-logo"/></svg><span><span class="gstars" aria-label="5 out of 5 stars">★★★★★</span><strong>Nikki D</strong></span></figcaption>
+      </figure>
+      <figure class="greview reveal">
+        <blockquote>“A first class operation… We couldn’t be more pleased with the product.”</blockquote>
+        <figcaption><svg class="g" aria-hidden="true"><use href="#g-logo"/></svg><span><span class="gstars" aria-label="5 out of 5 stars">★★★★★</span><strong>Jim Van Loan</strong></span></figcaption>
+      </figure>
+      <figure class="greview reveal">
+        <blockquote>“The friendly services, advice and of course the products they installed were outstanding.”</blockquote>
+        <figcaption><svg class="g" aria-hidden="true"><use href="#g-logo"/></svg><span><span class="gstars" aria-label="5 out of 5 stars">★★★★★</span><strong>Manfred Heisen</strong></span></figcaption>
+      </figure>
+      <figure class="greview reveal">
+        <blockquote>“Very knowledgeable and professional.”</blockquote>
+        <figcaption><svg class="g" aria-hidden="true"><use href="#g-logo"/></svg><span><span class="gstars" aria-label="5 out of 5 stars">★★★★★</span><strong>Jiggy Smaha</strong></span></figcaption>
       </figure>
     </div>
     <div class="center reveal"><a class="btn btn--outline" href="https://www.truesourcehome.com/reviews"><span>Read All Reviews</span></a></div>
@@ -509,7 +513,7 @@ window.RV_CONFIG = {
   colors: { primary: "#0a5788", primaryDeep: "#073f63", accent: "#11705a", eyebrow: "#8d6430", note: "#b98a4f" }
 };
 </script>
-<script src="script.js?v=20261119h"></script>
+<script src="script.js?v=20261119i"></script>
 <script src="visualizer/visualizer.js?v=2" defer></script>
 </body>
 </html>
