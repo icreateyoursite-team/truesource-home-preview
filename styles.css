@@ -23,7 +23,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;margin:0;letter-spacing:-.005em;text-wrap:balance}
 h2{font-size:clamp(2.1rem,3.6vw,3.3rem)}
 h1 em,h2 em,h3 em{font-style:italic;color:var(--brass-ink)}
-p{margin:0}
+p{margin:0;text-wrap:pretty}
+li,blockquote,small,figcaption{text-wrap:pretty}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 32px;position:relative}
 .ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:16px;z-index:999;background:#fff;padding:8px 14px}
@@ -164,6 +165,11 @@ p{margin:0}
 .sec__head{max-width:780px;margin:0 auto 64px;text-align:center;display:flex;flex-direction:column;align-items:center}
 .sec__head h2{margin-bottom:22px}
 .sec__head p:not(.eyebrow){color:var(--muted);font-size:1.05rem;max-width:640px;margin:0 auto}
+.sec__head{max-width:900px}
+.sec__head p.wide{max-width:760px;text-wrap:balance}
+.sec__head p.lines{max-width:none}
+#ai-tool .rv-intro{max-width:none}
+#ai-tool .rv-lead{max-width:none;white-space:pre-line}
 .center{text-align:center;margin-top:52px}
 
 /* product cards */
@@ -445,6 +451,9 @@ body.modal-open{overflow:hidden}
   .mega__links small{align-self:start}
 }
 @media (max-width:900px){
+  .lb{display:none}
+  .sec__head p.lines{max-width:640px;text-wrap:balance}
+  #ai-tool .rv-lead{white-space:normal}
   .minis,.quotes,.greviews{grid-template-columns:1fr}
   .greviews{max-width:620px;margin:0 auto}
   .minis{max-width:560px;margin:64px auto 0}
@@ -469,6 +478,7 @@ body.modal-open{overflow:hidden}
   .hero__btns .btn{width:100%}
   .stats{display:grid;grid-template-columns:1fr 1fr;gap:26px 18px}
   .stats strong{font-size:2.2rem}
+  .stats li>span{letter-spacing:.1em;font-size:.6rem}
   .ticker li{font-size:1.1rem;padding:18px 24px}
   .brandgrid,.fin__cards,.svc{grid-template-columns:1fr}
   .svc__item{padding:34px 30px 38px}
@@ -500,3 +510,6 @@ body.modal-open{overflow:hidden}
   .reveal{opacity:1;transform:none}
   .ticker__track{animation:none}
 }
+
+/* typography: short labels and captions break into even lines, never one word alone */
+small,strong,figcaption,.stats li>span,.ticks li,.checks li,.tiles small,.mini small,.greview blockquote,.svc__item p,.steps p,.partners small,.mega__links small,.hero__lead,.line__copy>p,.fin__copy p,.cta__copy p{text-wrap:balance}
