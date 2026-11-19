@@ -102,12 +102,22 @@
   /* consultation pop-up: every "Book a Consultation" opens it instead of scrolling */
   const modal = document.getElementById('consult');
   let lastFocus = null;
-  const openModal = () => {
+  const POP_KEY = 'ts_consult_popup_seen';
+  const markSeen = () => { try { sessionStorage.setItem(POP_KEY, '1'); } catch (e) {} };
+  const openModal = (auto) => {
     lastFocus = document.activeElement;
     modal.hidden = false; document.body.classList.add('modal-open');
     nav.classList.remove('menu-open'); burger.setAttribute('aria-expanded', false);
-    setTimeout(() => modal.querySelector('input[name=name]').focus(), 60);
+    markSeen();
+    /* a timed pop-up focuses the close button, so phones don't jump to the keyboard */
+    setTimeout(() => (auto === true ? modal.querySelector('.modal__x') : modal.querySelector('input[name=name]')).focus(), 60);
   };
+  /* timed pop-up: once per visit, a few seconds after the homepage opens, never over an open menu or form */
+  setTimeout(() => {
+    let seen = false; try { seen = !!sessionStorage.getItem(POP_KEY); } catch (e) {}
+    const busy = !modal.hidden || nav.classList.contains('menu-open') || document.querySelector('.has-mega.open') || (document.activeElement && /INPUT|TEXTAREA/.test(document.activeElement.tagName));
+    if (!seen && !busy) openModal(true);
+  }, 6000);
   const closeModal = () => {
     modal.hidden = true; document.body.classList.remove('modal-open');
     if (lastFocus) lastFocus.focus();
